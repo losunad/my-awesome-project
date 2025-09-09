@@ -5,3 +5,5 @@
 
 ## Ссылки
 - [Публичная страница на GitHub Pages](https://github.com/losunad)
+
+https://losunad.github.io/my-awesome-project/src
