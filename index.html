@@ -6,93 +6,228 @@
     <title>Главная - Название вашего сайта</title>
     <meta name="description" content="Краткое описание главной страницы вашего сайта">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Шапка сайта -->
-    <header>
-        <a href="/">Логотип или название сайта</a>
+    <header class="header" role="banner">
+        <a class="header__logo" href="/" aria-label="Перейти на главную страницу">Логотип или название сайта</a>
+        
         <!-- Главное меню навигации -->
-        <nav>
-            <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="src/about.html">О нас</a></li>
-                <li><a href="src/contacts.html">Контакты</a></li>
+        <nav class="nav" aria-label="Основная навигация">
+            <ul class="nav__list" role="menubar">
+                <li class="nav__item" role="none">
+                    <a class="nav__link nav__link--active" href="/" role="menuitem" aria-current="page">Главная</a>
+                </li>
+                <li class="nav__item" role="none">
+                    <a class="nav__link" href="src/about.html" role="menuitem">О нас</a>
+                </li>
+                <li class="nav__item" role="none">
+                    <a class="nav__link" href="src/contacts.html" role="menuitem">Контакты</a>
+                </li>
             </ul>
         </nav>
+        
         <!-- Кнопка для открытия формы -->
-        <button id="openDialog" type="button">Написать нам</button>
+        <button class="button button--primary" id="openDialog" type="button" aria-haspopup="dialog" aria-expanded="false">
+            Написать нам
+        </button>
     </header>
 
     <!-- Уникальное основное содержимое страницы -->
-    <main>
-        <h1>Добро пожаловать на наш сайт!</h1>
-
-        <!-- Секция 1 с якорем -->
-        <section id="services">
-            <h2>Наши услуги</h2>
-            <p>Описание предоставляемых услуг...</p>
-            <a href="#contacts">Связаться с нами</a> <!-- Якорная ссылка внутри страницы -->
+    <main class="main" id="main-content" role="main">
+        <!-- Герой-секция -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero__background" style="background: linear-gradient(135deg, rgba(10, 132, 255, 0.8) 0%, rgba(155, 81, 224, 0.8) 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;" aria-hidden="true"></div>
+            <div class="hero__content">
+                <h1 class="hero__title" id="hero-title">Добро пожаловать на наш сайт!</h1>
+                <p class="hero__subtitle">Создаем цифровые решения для вашего бизнеса</p>
+                <button class="button button--white" id="heroDialogButton" aria-haspopup="dialog">
+                    Начать проект
+                </button>
+            </div>
         </section>
 
-        <!-- Секция 2 с якорем -->
-        <section id="portfolio">
-            <h2>Портфолио</h2>
-            <p>Примеры наших работ...</p>
+        <!-- Секция портфолио -->
+        <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+            <div class="section__container">
+                <h2 class="section__title" id="portfolio-title">Портфолио</h2>
+                <p class="section__text">Примеры наших работ...</p>
+        
+                <!-- Адаптивное изображение -->
+                <figure class="image-container">
+                    <img 
+                        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                        srcset="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80 400w,
+                        https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80 800w,
+                        https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 1200w"
+                        sizes="(max-width: 768px) 100vw, 800px"
+                        alt="Пример нашего проекта - веб-разработка: современный интерфейс с кодом на экране"
+                        class="portfolio-image"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                    <figcaption class="image-caption">Пример нашего проекта по веб-разработке</figcaption>
+                </figure>
+            </div>
         </section>
 
-        <!-- Секция 3 с якорем -->
-        <section id="contacts">
-            <h2>Контактная информация</h2>
-            <p>Наши контакты...</p>
-            <a href="src/contacts.html">Подробнее</a> <!-- Ссылка на отдельную страницу -->
+        <!-- Секция видео -->
+        <section class="section" id="video" aria-labelledby="video-title">
+            <div class="section__container">
+                <h2 class="section__title" id="video-title">Видео о нашей работе</h2>
+                <p class="section__text">Посмотрите, как мы создаем проекты:</p>
+        
+                <!-- Контейнер для видео -->
+                <div class="video-container">
+                    <iframe 
+                        src="https://rutube.ru/video/f4310ddb9e6f29864e6591dcd38446e5" 
+                        title="Демонстрация нашего рабочего процесса - создание цифровых решений"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        class="video-iframe"
+                        loading="lazy"
+                        aria-describedby="video-description"
+                    ></iframe>
+                    <p id="video-description" class="visually-hidden">
+                        Видео демонстрирует процесс работы нашей команды над проектами веб-разработки
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция контактов -->
+        <section class="section" id="contacts" aria-labelledby="contacts-title">
+            <div class="section__container">
+                <h2 class="section__title" id="contacts-title">Контактная информация</h2>
+                <p class="section__text">Наши контакты...</p>
+                <a class="section__link" href="src/contacts.html" aria-label="Перейти на страницу контактов для получения подробной информации">
+                    Подробнее
+                </a>
+            </div>
         </section>
     </main>
+
     <!-- Подвал сайта -->
-    <footer>
-        <p>&copy; 2023 Название вашего сайта. Все права защищены.</p>
-        <p>Телефон: +7 (904) 5961-72-84</p>
+    <footer class="footer" role="contentinfo">
+        <div class="footer__container">
+            <p class="footer__copyright">&copy; 2023 Название вашего сайта. Все права защищены.</p>
+            <address class="footer__contacts">
+                Телефон: <a href="tel:+790459617284" aria-label="Позвонить нам по телефону">+7 (904) 5961-72-84</a>
+            </address>
+        </div>
     </footer>
 
     <!-- Модальное окно с формой -->
-    <dialog id="contactDialog" aria-labelledby="dialogTitle">
-        <h2 id="dialogTitle">Обратная связь</h2>
-    
-        <form id="contactForm" method="dialog" novalidate>
-            <!-- Поля формы будут здесь -->
-            <label for="name">Имя</label>
-            <input id="name" name="name" type="text" required minlength="2" autocomplete="given-name">
+    <dialog class="modal" id="contactDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDescription">
+        <div class="modal__content" role="document">
+            <header class="modal__header">
+                <h2 class="modal__title" id="dialogTitle">Обратная связь</h2>
+                <p id="dialogDescription" class="visually-hidden">
+                    Заполните форму ниже, чтобы связаться с нами. Все поля обязательны для заполнения.
+                </p>
+            </header>
+        
+            <form class="form" id="contactForm" method="dialog" novalidate>
+                <fieldset class="form__fieldset">
+                    <legend class="visually-hidden">Контактная информация</legend>
+                    
+                    <div class="form__group">
+                        <label class="form__label" for="name">Имя *</label>
+                        <input class="form__input" id="name" name="name" type="text" required minlength="2" 
+                               autocomplete="given-name" aria-required="true"
+                               placeholder="Введите ваше имя">
+                        <span class="form__error" id="nameError" aria-live="polite"></span>
+                    </div>
 
-            <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" required autocomplete="email">
+                    <div class="form__group">
+                        <label class="form__label" for="email">E-mail *</label>
+                        <input class="form__input" id="email" name="email" type="email" required 
+                               autocomplete="email" aria-required="true"
+                               placeholder="example@mail.com">
+                        <span class="form__error" id="emailError" aria-live="polite"></span>
+                    </div>
 
-            <label for="phone">Телефон</label>
-            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
-                aria-describedby="phoneHelp" placeholder="+7 (___) ___-__-__"
-                required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
-            <small id="phoneHelp">Формат: +7 (900) 000-00-00</small>
+                    <div class="form__group">
+                        <label class="form__label" for="phone">Телефон *</label>
+                        <input class="form__input" id="phone" name="phone" type="tel" inputmode="tel" 
+                               autocomplete="tel" aria-required="true"
+                               aria-describedby="phoneHelp" 
+                               placeholder="+7 (900) 000-00-00"
+                               required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
+                        <small class="form__help" id="phoneHelp">Формат: +7 (900) 000-00-00</small>
+                        <span class="form__error" id="phoneError" aria-live="polite"></span>
+                    </div>
 
-            <label for="date">Дата</label>
-            <input id="date" name="date" type="date">
+                    <div class="form__group">
+                        <label class="form__label" for="date">Дата</label>
+                        <input class="form__input" id="date" name="date" type="date"
+                               aria-describedby="dateHelp">
+                        <small class="form__help" id="dateHelp">Выберите предпочтительную дату для связи</small>
+                    </div>
 
-            <label for="topic">Тема</label>
-            <select id="topic" name="topic" required>
-                <option value="">Выберите тему</option>
-                <option>Вопрос</option>
-                <option>Заказ</option>
-            </select>
+                    <div class="form__group">
+                        <label class="form__label" for="topic">Тема *</label>
+                        <select class="form__select" id="topic" name="topic" required aria-required="true">
+                            <option value="">Выберите тему</option>
+                            <option value="question">Вопрос</option>
+                            <option value="order">Заказ</option>
+                            <option value="cooperation">Сотрудничество</option>
+                        </select>
+                        <span class="form__error" id="topicError" aria-live="polite"></span>
+                    </div>
 
-            <label for="message">Сообщение</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+                    <div class="form__group">
+                        <label class="form__label" for="message">Сообщение *</label>
+                        <textarea class="form__textarea" id="message" name="message" rows="4" required
+                                  aria-required="true" placeholder="Опишите ваш вопрос или проект..."
+                                  aria-describedby="messageHelp"></textarea>
+                        <small class="form__help" id="messageHelp">Минимальная длина сообщения - 10 символов</small>
+                        <span class="form__error" id="messageError" aria-live="polite"></span>
+                    </div>
+                </fieldset>
 
-            <div class="form-actions">
-                <button type="button" id="closeDialog">Закрыть</button>
-                <button type="submit">Отправить</button>
-            </div>
-        </form>
+                <div class="form__actions">
+                    <button class="button button--secondary" type="button" id="closeDialog" aria-label="Закрыть окно без сохранения">
+                        Закрыть
+                    </button>
+                    <button class="button button--primary" type="submit" id="submitButton">
+                        Отправить
+                    </button>
+                </div>
+            </form>
+        </div>
     </dialog>
 
     <!-- Подключение JavaScript -->
     <script src="main.js" defer></script>
+
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .hero__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hero__content {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </body>
 </html>
